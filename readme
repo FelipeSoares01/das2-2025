@@ -51,3 +51,46 @@ Tratar recursos todos como descartaveis
 
  Recursos que podem ser facilmente substituidos;
  Substituição de recursos mais antigos automaticamente devido a descartabilidade
+
+06/03 
+
+automatizar o provisionamento das máquinas, infra como código.
+não tratar dados como algo único sempre, manter opções de backup para restabekecer o sistema mais rapimento.
+uma coisa altamente acoplada algo que não pode ser substituita por outra de forma rapida.
+quando se trata de banco de bados geralmente é muito acoplano, mas pode ser usado um ELB um balanceador de carga e varias copias do banco.
+half check
+sempre tenha redundancia incluse no ELB (elastic load balancing)
+
+escolhar a opção de banco correta, temos 2 grandes mundos
+relacional mais tradicional o problema dele ele é fixo, ele tem um limite escalabilidade horizontal, criar replicas do banco mas é de leitura não consegue escalar
+infinitamente o banco se torna lento
+
+noSQL pensado para escalar horizontal, perfomance extrema e quando não se consegue modelar a tabala do banco de dados
+
+aws procura sempre ser eficiente no custos, para o cliente gastar apenas o que precisa
+não se criar coisas complicadas para tarefas simples
+
+Use cache
+minimizar as operações de requisições de dados.
+segurança usar serviços gerenciados AWS que tem a responsabilidade (S3)
+muitas empresas não tem uma boa segurança, tem apenas um firewall e um antivivus e acham que estão seguros
+semore use o principio do privilégio minimo. cada um tem o acesso que precisa de nada mais.
+
+infraestrutura global da AWS
+
+36 regiões no mundo , 114 zonas de disponibilidasde 700 ROPS prontos de presença
+pensar nas regiões que os clientes precisam de acesso, quanto mais perto mais rapido é .
+conexão entre as AZ totalmente redundante entre delas rede propria rede privada da AWS
+local zone rodar serviços computacionais aonde não tem regiões AWS
+pequenas AZs dentro de outros lugares. 
+
+WAVELength 5g rodar serviços da AWS em operadoras de telefonia evitando gargalos nas redes normais de internet
+colado no 5g
+
+
+
+
+
+
+
+
