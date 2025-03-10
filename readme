@@ -87,6 +87,51 @@ pequenas AZs dentro de outros lugares.
 WAVELength 5g rodar serviços da AWS em operadoras de telefonia evitando gargalos nas redes normais de internet
 colado no 5g
 
+10-03 
+
+todas as regiões da aws tem 3 azs algumas tem mais, Az são datacenters
+
+Az serve para alta disponibilidade
+local zone extrutua parecida com uma az mas ela é menor n precisa deu uma região, ( argentina tem 1 em buenos aires). serviços computacionais
+conteudos rapidos, exemplo o spam do netflix usam locals zones Edge locastion 700 pontos espalhaados pelo mundo, eles buscam as informação de forma intermediario reginal cache.
+buscando da região.
+
+Segurança de acesso. 
+modelo d responsabilidasde compartilhada quando vc roda sua infra vc é o responsavel
+quando vc roda  outro a responsabilidade é compartilhada  IaaS/EC2  servidor  infraestrutura com serviço
+responsabilidade da aws região zonas livres e edge locastlion a infra 
+eles passam apenas o link de acesso o resto da resposabilidade é sua
+
+S3 ( serviço de software as A serviço / PaaS 
+cria um balde gamha um endereço de inter poem e a tira arquivos um DROPBOX
+servidor rede fiwrewall responsabilidade aws
+
+principaus pilares da segurança
+tem que ter unm provedor de identidade forte ( não ter sistemas que guardam usuarios e senhas dentro do banco de dados ( usar soft que guardam  as credenciais exemplo keycloak).
+
+proteger dados em transito e em descanso ( SSL TLS HTTPS, trafegar as semha criptogradas ) 
+criptografia em descanso quando esta gravada em disco um bucket s3 HD do servidor
+
+aplicar segurança em todas as camadas ( antivirus, firewall, 
+
+Manter os dados logne das pessoas( não dar acesso direito ao banco de dados, precisam passar por autenticação
+
+Ter rastreabilidade vc saber quando um usuario logou e qo que fez no sistema
+O que aconteceu na nuvem, 
+
+Se preparar para eventos de segurança, ter uma equipe de segurança caçando problemas.
+
+automatizar as meelhores praticas de segurança, evitar coisas manuais, evitando problemas de brechas de segurança.
+
+CONCEITO DE NUVEM
+autenticação mostrar que o usuario realmente é vc no casos 2 fatores de autenticação, ( login e senha ) e biometria ( autenticação pelo celular ou gerador de senha)
+Autorização o que ele pode ter acesso, pode mecher em baldes s3 mas não no banco de dados, é dito o que cada usuario pode ou não mecher.  (IAM identiti proviber aws)
+principio do privilegio minimo
+
+sempre use criptografia entre as contas
+
+
+
 
 
 
