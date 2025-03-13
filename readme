@@ -130,6 +130,25 @@ principio do privilegio minimo
 
 sempre use criptografia entre as contas
 
+13/03/25 
+
+Modelo de responsabilidade compartilhada
+Principio de Privilegio minimo
+Autenticação
+Autorização
+Identify and Acess Management
+Usuarios
+Acesso pela console / programatico
+
+IAM ele cuida de usaurios grupos de usuarios roles voices
+usuario é uma credencial  pode ser um software tb
+Sempre que criar uma conta deve pensar no tempo de duração dela. caso algum funcionario saia vc deve removoela do IAM
+credenciais acess key e acess passoword são de longas duração a menos que alguem remova e cria novas, ficam nas maquinas.
+usuario ROOT não tem limite do que pode fazer. 
+Roles: são mudanças de autorização e negação de outras para acesso em outras partes do sistema
+
+
+
 
 
 
