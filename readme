@@ -147,6 +147,23 @@ credenciais acess key e acess passoword são de longas duração a menos que alg
 usuario ROOT não tem limite do que pode fazer. 
 Roles: são mudanças de autorização e negação de outras para acesso em outras partes do sistema
 
+17/03
+
+RBAC  ROle base acess Control são mecanimos de controle, permissões de banco.
+polices de itendidade são dadas pelo Root feito pelo IAM
+polices de recursos feito pelo S3 criando um balde ( bucket),  
+ARN é um identificador unico, permitindo que qualquer usuario tenha acesso ao  seu bucket.
+é um recurso aonde vc vai na AWS e escreve que vc da permissão de acesso.
+recurso tem principal identificar quem é o usuario.
+
+sistemas de arquivos blocados eles são no meio do arquivo ( EBS)
+file share são redes compartilhadas de computadores para troca de arquivos dentro do servidor (EFS) FXs
+armazenamento de objeto é um tipo de armazenamento da internet que salva o binario do arquivo e meta dados (dados de dados sobre os dados ), o Dono é tal pessoas. (S3)
+s3 é virtualmente ilimitado n tem numero max de armazenamento.
+limite de 5 t por objeto/arquivo
+todo objeto s3 tem uma URL global e unica.
+
+
 
 
 
