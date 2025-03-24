@@ -163,6 +163,23 @@ s3 é virtualmente ilimitado n tem numero max de armazenamento.
 limite de 5 t por objeto/arquivo
 todo objeto s3 tem uma URL global e unica.
 
+17/03 
+policy de identidade
+
+24/03
+
+pessoas que lhedam com s3 precisa de preocuiiapr com limite de espaço. Lifecycle
+impactando no custo pq os clientes precisam ter espaço, jeitos de economizar apagar o que precisa ou ajustar as classes de armazenamento ( que tb é pago)
+pode ser criadas regras para apagar arquivos com tempo de validade  presscritos pelas regras da empresa, transcionar interclasses ou expirar um arquivo
+ele sempre nascew com versionamento desligado, mas se habilitar não da mais para desabilitar o que pode ser feito é pausar.
+cada versão é uma copia inteira do objeto
+não é possível editar um arquivo dentro do s3.
+
+o que é cors
+validação proteção pros seus arquivos no s3
+
+
+
 
 
 
