@@ -178,6 +178,16 @@ não é possível editar um arquivo dentro do s3.
 o que é cors
 validação proteção pros seus arquivos no s3
 
+27/03
+cuidar para não expor bucket para internet
+uso de criptografia
+SSE-S3
+são envelopes com chaves criptografadas
+ele quando é feito vem todo privado só o dono tem acesso,
+vc pode tornar parcialmente acessível, usuarios que vc determianr podem acessar
+ou vc pode tornar totalmente publico exemplo um site.
+
+batch operation vc faz copia de arquivos para outro balde escolhendo quais vc quer ver, pois pode haver muitos arquivos para listar de uma unica vez
 
 
 
