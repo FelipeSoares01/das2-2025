@@ -190,6 +190,32 @@ ou vc pode tornar totalmente publico exemplo um site.
 batch operation vc faz copia de arquivos para outro balde escolhendo quais vc quer ver, pois pode haver muitos arquivos para listar de uma unica vez
 
 
+03/04
+EC2
+ma nuvem vc tem multiplas maneira de ordar algo dentro dela, pode usar o ec2 para rodar uma maquina direta no hardware
+ELastic COmpute Cloud, é o segundo serviço da AWS, servidores para rodar na nuvem
+todo servidor fisico, mas o sistema não tem contado direto com o hardware, ele tem contado com o hypervisor, no caso um geremnciador vai admnistar o hardware CPU memoria etc, 
+atraves das placa de rede é acessado a internet outros servidores e serviços da AWS, no caso um s3 tb pode ser conecatado, e geralmente para guarda o servidor é usado o EBS ( Amazon elastic Block Store 
+armazenamento ephemewral é tipo um flash  armazenamento persistente é o que fica quando desliga maquina etc
+para criar um servidor aws tem um passo a passo, escolher a aamazon machine imagem que via ser usada no caso o sistema operaciona, seja linux wins ou mac, (AMI) 
+tornar o ambiente repetitivel, reutilizavel e recuperavel. 
+a imagem vive em uma região da aws, mas pode ser copiada caso não possua na sua regiao
+existe um conjunto de imagnes que a propria aws te dar caso não queira criar do zero
+e existe o AWS marketplace mas pode haver algum soft a mais embutido
+community AMIs use por sua conta e risco nada é testado pela aws é publico.
+faz o launche no caso cria a maquina estado de pendente depois estadao de running, pode rebootar a maquima, pode desligar a maquima, e pode terminar no caso apagar ela.
+e pode ser hibernada.
+vc precisa saber as familias na escolha da maquina ( 1 caracter familia, depois numero a geração, letreas complementarem ( gn graviton  ARM) tamanho da maquina.
+computer optimizer é feito para ver se a maquina esta sobrando ou faltando overprovisioned ou underrovivisioned
+EBS não é fileshare, 
+s3 não é sistema de arquivos
+File Share EFS ou FSX 
+EFS sistema de file share  LINUX. por causa do protocolo v4
+pago apenas pelo que se usa de armazenamento
+FSX pode ser usado com o wins por causa do protolo suportado dele.
+
+
+
 
 
 
