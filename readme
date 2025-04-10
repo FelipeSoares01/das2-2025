@@ -234,6 +234,24 @@ amazon ec2 Spot leilão de maquinas comprar partes ociosas de maquinas afin de p
 
 nAo se pode depender de invervenção manual para proteção das maquinas. ( segurança)
 
+10/04
+
+BANCO DE DADOS 
+escalabilidade de um banco sempre é um desafio
+quanto de espaço eu preciso
+modelo de dados que vai ser utilziado e latencia
+precisa que suporte qualquer modelo de dados, ja que o banco de dados relacional não tem total suporte 
+na aws tem um serviço chamado RDS feito para subir banco de dados na aws, inclusive pode subir uma maquina e vc mesmo instalar o banco ( serviço não gerenciado) 
+Mas pode ser feito gerenciados tb mundo relacional
+na parte não relacional DynamoDB aonde roda amazon.com
+amazon netpune blockchains são exenmplos disso
+amazon elastic cache copias do banco para resposta mais rapida
+escalabilidade vertical aumenta a maqyina poder
+vertical hozizontal copias do banco
+
+
+
+
 
 
 
