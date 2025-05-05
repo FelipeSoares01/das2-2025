@@ -249,6 +249,21 @@ amazon elastic cache copias do banco para resposta mais rapida
 escalabilidade vertical aumenta a maqyina poder
 vertical hozizontal copias do banco
 
+05-05
+
+Amazon VPC private virutal cloud, software definied network SDN, logicamente ela pode ter varias topologias
+primeiro nivel de isolamento da aws se chama conta, 
+segundo mivel vem com as vpcs
+só pode pertencer a uma unica região usuario define o que vai se comunicar e o tamanho da rede, CIDR block.
+CIDR ele gerencia IPs de redes
+subnet é um pedaço da vpc estando dentro da mesma rede.
+os nummeros de ip de subnet não podem bater com outras subnets que estiverem na mesma rede evitando colisão
+toda vpc tem uma tabela de rotas tendo apenas uma regraw que é fixa e não pode ser alterada  CIDS da vpc para local, qualquer coisa dentro da minha rede fala com quaqluer coisa dentro da
+minha rede, trafego local.
+dhcp protoclo de distribuiçaõ de redes mas no caso da aws ele n tem ips estaticos. são fixos
+existen 2 tipo de sub net publica e privada a public é onde os recursos dentro dela estão visiveis na internet publica tando dentro dela quando fora dela
+internet gateway tem que ser associada a VPC, precisa ter uma regraw de saida para internet.
+subnet privada, 
 
 
 
