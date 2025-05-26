@@ -273,7 +273,15 @@ Aula 05/05
 VPC
 CIDR
 
+26/05
+Segurança
 
+amazon cognito usado um sistema IAM groups para permissionamento de pessoas, associando as permissões que as pessoas precisam ter, erdando as permissões,
+jeito mais simples e seguro de gerencia.
+grupos n podem ter grupos dentro deles
+deve usar 
+ROLES
+ABAC
 
 
 
