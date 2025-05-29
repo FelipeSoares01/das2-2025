@@ -285,6 +285,36 @@ ABAC
 
 
 
+29/05 
+User Pool cognito usa protocolos oauth ou openid, serve como autenticação para jogar na tela da AWS
+enviando um token para validar,  pode ate usar uma identidade federad
+para fazer interaçção entrra S3 e outros serviços amazon usam uma segunda pool. (identity pool)
+suporte token JWTs 
+suporte customização da tela de login
+
+AWs orgamization serviço que permite gerenciar multiplas contas usando hierarquia, dsentro de um lugar só, pricipal vantagen vc ve todas as contas e toda cobrança em um unico lugar
+acessa desconti por volume, quanto mais usa mas barato fica.
+SCP. services control policies politicas de governcia cdas conta da aws.
+quem da permissão apolice de grant ou de recurso
+ aws control tower, serviço que cria contas para grandes empresas com todaos os recursos.
+proteçãp teorema cap confiabilidade  integridade disponibulidade nunca se ocnsegue ter os 3 juntos sempre tem que abrir mão de algum
+uma maneira dem elghgorar isso é usar criptografia, envelope de criptografia, 
+criptgrafia ssimetria a chave do envelope é a mesma para criptografiar e descriptografar faz os 2 trabalhos modelo mais simples
+assimetria usa 2 chaves, e sáo gerada por um metodo matematico
+
+
+CSE 
+SSE
+aws kms ferramente de criptografia padrão da aws cria chave simetrica ou assimetrica e ele mantem o ciclo de vida delas.
+HSM's criptgrafia via hardware ficando nujm servidor fisico para guardar chaves é carissimo
+WAF firewall dinamico ajudau a proteger aplicações expostas apra internet
+Shield  ferramenta de proteção contra ataque de negação DDOS attaccks, 
+MAcie ferramenta para varrer arquivos extruturados e semistriturados arquivos Json.
+Inspector ele varre as masquinas EC2 e container ECR procurando por vulnerabilidades. 
+Detetiva identificar comportamentos estranhos dentro da conta, focado em usuarios.
+Security hub painel para congtrolar todo sistem de segurança controla todos os demais aplicações mapa  geral deles é um gerenciador.
+Trusted advisor da recomendações de opmizaçoões por custos é pago.
+
 
 
 
