@@ -315,6 +315,19 @@ Detetiva identificar comportamentos estranhos dentro da conta, focado em usuario
 Security hub painel para congtrolar todo sistem de segurança controla todos os demais aplicações mapa  geral deles é um gerenciador.
 Trusted advisor da recomendações de opmizaçoões por custos é pago.
 
+02/06
+monitoramento 
+para alcançar alta disponibilidade começar pelo monitoramento,  otimizar os recursos, se preocupar com o desempenho,
+segurança tb entra no monitoramento,  os 4 pilares
+Cloudwatch é a feramenta central para coletar armezenar e analisar metricas,  ( monitora log e metricas) 
+metricas são gratuitas logs não, pois o volume é muito grande.
+metricas customizadas tb são pagas,
+pode-se gerar grafico e gerar tb Alarmes
+alarmes são ferramen tas de automização de prevenção para avisar sobre uso ou desuso de recursos
+
+EventBridge barramento de eventos, monitorar aws em tempo real, 
+
+controlar custos aws cost exploder aws bagets, aws cost and usa report 
 
 
 
