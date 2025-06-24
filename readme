@@ -1,340 +1,205 @@
-Design e Arquitetura de Software 2
+✅ Aula 24/02 - Well-Architected Framework (AWS)
 
-Felipe Augusto Soares
-Aula 27/02/2025
-Trade-offs
+Excelência Operacional: Monitoramento, automação de tarefas, resposta a falhas e melhoria contínua com foco em observabilidade.
 
-Resultado da escolha de ferramentas necessarias para um projeto;
+Segurança: Proteção de dados e sistemas via criptografia, controle de acesso e princípio do privilégio mínimo. Utilização de serviços como IAM, KMS e CloudTrail.
 
-Exemplo:
+Confiabilidade: Recuperação de falhas, redundância, tolerância a falhas e gestão de mudanças com práticas de failover e backup.
 
- Durabilidade
-    Dados duraveis, garantia de permanencia de informação;
-    Caracteristicas de sistemas transacionais;
+Eficiência em Performance: Uso eficiente de recursos, escalabilidade horizontal e vertical e escolha adequada de instâncias e serviços.
 
- Cache
-    Memoria temporaria, guardar informações em memória para mais rapidez  na busca dos dados
+Otimização de Custos: Evitar desperdícios com uso sob demanda, instâncias reservadas, savings plans e shutdown automático de recursos ociosos.
 
-Escalabilidade
+Sustentabilidade: Reduzir impacto ambiental otimizando código, desligando recursos não usados e escolhendo regiões com energia renovável.
 
-Assegurar que uma aplicação consiga se manter mesmo em altos niveis de demandas
+✅ Aula 27/02 - Trade-offs e Boas Práticas de Arquitetura
 
-Exemplo:
+Trade-offs: Escolhas entre desempenho, durabilidade e custo em decisões arquiteturais.
 
- Servidor local
-    Maior rentabilidade no sentido de gerenciamento fixo
+Escalabilidade/Elasticidade: Capacidade de expandir ou reduzir recursos conforme necessidade de uso sem afetar o desempenho.
 
- Servidor Clound
-    Maior segurança e flexibilidade na garantia de escalabilidade
+Automatização / Autoescalabilidade: Uso de políticas para escalar automaticamente recursos com base em métricas.
 
-Automatização
+Infraestrutura como Código (IaC): Configurações como scripts (ex: CloudFormation, Terraform) para agilidade, versionamento e padronização.
 
-Automatizar processos e recursos de um sistema 
+Recursos Descartáveis: Instâncias efêmeras, facilmente substituíveis, sem dependência específica.
 
-Exemplo:
+Baixo Acoplamento: Sistemas independentes, comunicação via APIs, que favorecem a resiliência.
 
- Aplicação que monitora o estado de servidores para criar alertas;
- Sistema responsável por recriar maquinas virtuais sozinha;
- Aplicar recursos necessários para colocar a aplicação online novamente;
+Design de Serviços e não de Servidores: Foco em soluções como Lambda, SQS, DynamoDB, abstraindo servidores físicos.
 
-IaC
+Escolha do Banco Correto: Uso adequado de banco relacional (ex: RDS) ou NoSQL (ex: DynamoDB) conforme tipo e volume de dados.
 
-Infraestrutura em forma de codigo
+✅ Aula 06/03 - Alta Disponibilidade e Infraestrutura AWS
 
- Reduz falhas por configuração manual;
- Propaga mudanças e atualizações de forma uniforme;
- Agilidade na execução e manutenção de aplicações;
+Evitar Ponto Único de Falha: Implementar redundância entre AZs, múltiplas instâncias e backups regulares.
 
-Recursos Descartaveis
+Otimização de Custos: Eliminar recursos ociosos, ajustar instâncias conforme necessidade.
 
-Tratar recursos todos como descartaveis
+Uso de Cache: Acelera acessos com uso de Redis/Memcached (Elasticache) e reduz pressão sobre o banco.
 
- Recursos que podem ser facilmente substituidos;
- Substituição de recursos mais antigos automaticamente devido a descartabilidade
+Proteger Infraestrutura: Aplicar boas práticas de segurança, monitoramento e replicação de dados.
 
-06/03 
+Regiões e Zonas de Disponibilidade: Usar regiões próximas ao usuário para latência baixa e alta disponibilidade.
 
-automatizar o provisionamento das máquinas, infra como código.
-não tratar dados como algo único sempre, manter opções de backup para restabekecer o sistema mais rapimento.
-uma coisa altamente acoplada algo que não pode ser substituita por outra de forma rapida.
-quando se trata de banco de bados geralmente é muito acoplano, mas pode ser usado um ELB um balanceador de carga e varias copias do banco.
-half check
-sempre tenha redundancia incluse no ELB (elastic load balancing)
+Local Zones / Data Centers: Permite execução de cargas locais com latência mínima onde não há regiões completas da AWS.
 
-escolhar a opção de banco correta, temos 2 grandes mundos
-relacional mais tradicional o problema dele ele é fixo, ele tem um limite escalabilidade horizontal, criar replicas do banco mas é de leitura não consegue escalar
-infinitamente o banco se torna lento
+✅ Aula 10/03 - Edge Locations e Segurança
 
-noSQL pensado para escalar horizontal, perfomance extrema e quando não se consegue modelar a tabala do banco de dados
+POPs / Edge Locations: Utilização de CloudFront para distribuição global de conteúdo com baixa latência.
 
-aws procura sempre ser eficiente no custos, para o cliente gastar apenas o que precisa
-não se criar coisas complicadas para tarefas simples
+Segurança: Devem ser aplicadas em camadas: rede, dados, aplicação e autenticação.
 
-Use cache
-minimizar as operações de requisições de dados.
-segurança usar serviços gerenciados AWS que tem a responsabilidade (S3)
-muitas empresas não tem uma boa segurança, tem apenas um firewall e um antivivus e acham que estão seguros
-semore use o principio do privilégio minimo. cada um tem o acesso que precisa de nada mais.
+Responsabilidade Compartilhada: AWS gerencia hardware e rede, cliente gerencia configuração, acesso e dados.
 
-infraestrutura global da AWS
+Autenticação e Autorização: Validação de identidade com IAM, Cognito e atribuição de permissões.
 
-36 regiões no mundo , 114 zonas de disponibilidasde 700 ROPS prontos de presença
-pensar nas regiões que os clientes precisam de acesso, quanto mais perto mais rapido é .
-conexão entre as AZ totalmente redundante entre delas rede propria rede privada da AWS
-local zone rodar serviços computacionais aonde não tem regiões AWS
-pequenas AZs dentro de outros lugares. 
+Privilégio Mínimo: Garantir acesso estritamente necessário a cada identidade.
 
-WAVELength 5g rodar serviços da AWS em operadoras de telefonia evitando gargalos nas redes normais de internet
-colado no 5g
+Criptografia: HTTPS para dados em trânsito e SSE para dados em repouso (ex: S3).
 
-10-03 
+✅ Aula 13/03 - IAM e Acessos
 
-todas as regiões da aws tem 3 azs algumas tem mais, Az são datacenters
+IAM: Gerencia usuários, grupos, roles e permissões com granularidade.
 
-Az serve para alta disponibilidade
-local zone extrutua parecida com uma az mas ela é menor n precisa deu uma região, ( argentina tem 1 em buenos aires). serviços computacionais
-conteudos rapidos, exemplo o spam do netflix usam locals zones Edge locastion 700 pontos espalhaados pelo mundo, eles buscam as informação de forma intermediario reginal cache.
-buscando da região.
+Privilégio Mínimo: Minimiza risco de uso indevido.
 
-Segurança de acesso. 
-modelo d responsabilidasde compartilhada quando vc roda sua infra vc é o responsavel
-quando vc roda  outro a responsabilidade é compartilhada  IaaS/EC2  servidor  infraestrutura com serviço
-responsabilidade da aws região zonas livres e edge locastlion a infra 
-eles passam apenas o link de acesso o resto da resposabilidade é sua
-
-S3 ( serviço de software as A serviço / PaaS 
-cria um balde gamha um endereço de inter poem e a tira arquivos um DROPBOX
-servidor rede fiwrewall responsabilidade aws
-
-principaus pilares da segurança
-tem que ter unm provedor de identidade forte ( não ter sistemas que guardam usuarios e senhas dentro do banco de dados ( usar soft que guardam  as credenciais exemplo keycloak).
-
-proteger dados em transito e em descanso ( SSL TLS HTTPS, trafegar as semha criptogradas ) 
-criptografia em descanso quando esta gravada em disco um bucket s3 HD do servidor
-
-aplicar segurança em todas as camadas ( antivirus, firewall, 
-
-Manter os dados logne das pessoas( não dar acesso direito ao banco de dados, precisam passar por autenticação
-
-Ter rastreabilidade vc saber quando um usuario logou e qo que fez no sistema
-O que aconteceu na nuvem, 
-
-Se preparar para eventos de segurança, ter uma equipe de segurança caçando problemas.
-
-automatizar as meelhores praticas de segurança, evitar coisas manuais, evitando problemas de brechas de segurança.
-
-CONCEITO DE NUVEM
-autenticação mostrar que o usuario realmente é vc no casos 2 fatores de autenticação, ( login e senha ) e biometria ( autenticação pelo celular ou gerador de senha)
-Autorização o que ele pode ter acesso, pode mecher em baldes s3 mas não no banco de dados, é dito o que cada usuario pode ou não mecher.  (IAM identiti proviber aws)
-principio do privilegio minimo
-
-sempre use criptografia entre as contas
-
-13/03/25 
-
-Modelo de responsabilidade compartilhada
-Principio de Privilegio minimo
-Autenticação
-Autorização
-Identify and Acess Management
-Usuarios
-Acesso pela console / programatico
-
-IAM ele cuida de usaurios grupos de usuarios roles voices
-usuario é uma credencial  pode ser um software tb
-Sempre que criar uma conta deve pensar no tempo de duração dela. caso algum funcionario saia vc deve removoela do IAM
-credenciais acess key e acess passoword são de longas duração a menos que alguem remova e cria novas, ficam nas maquinas.
-usuario ROOT não tem limite do que pode fazer. 
-Roles: são mudanças de autorização e negação de outras para acesso em outras partes do sistema
-
-17/03
-
-RBAC  ROle base acess Control são mecanimos de controle, permissões de banco.
-polices de itendidade são dadas pelo Root feito pelo IAM
-polices de recursos feito pelo S3 criando um balde ( bucket),  
-ARN é um identificador unico, permitindo que qualquer usuario tenha acesso ao  seu bucket.
-é um recurso aonde vc vai na AWS e escreve que vc da permissão de acesso.
-recurso tem principal identificar quem é o usuario.
-
-sistemas de arquivos blocados eles são no meio do arquivo ( EBS)
-file share são redes compartilhadas de computadores para troca de arquivos dentro do servidor (EFS) FXs
-armazenamento de objeto é um tipo de armazenamento da internet que salva o binario do arquivo e meta dados (dados de dados sobre os dados ), o Dono é tal pessoas. (S3)
-s3 é virtualmente ilimitado n tem numero max de armazenamento.
-limite de 5 t por objeto/arquivo
-todo objeto s3 tem uma URL global e unica.
-
-17/03 
-policy de identidade
-
-24/03
-
-pessoas que lhedam com s3 precisa de preocuiiapr com limite de espaço. Lifecycle
-impactando no custo pq os clientes precisam ter espaço, jeitos de economizar apagar o que precisa ou ajustar as classes de armazenamento ( que tb é pago)
-pode ser criadas regras para apagar arquivos com tempo de validade  presscritos pelas regras da empresa, transcionar interclasses ou expirar um arquivo
-ele sempre nascew com versionamento desligado, mas se habilitar não da mais para desabilitar o que pode ser feito é pausar.
-cada versão é uma copia inteira do objeto
-não é possível editar um arquivo dentro do s3.
-
-o que é cors
-validação proteção pros seus arquivos no s3
-
-27/03
-cuidar para não expor bucket para internet
-uso de criptografia
-SSE-S3
-são envelopes com chaves criptografadas
-ele quando é feito vem todo privado só o dono tem acesso,
-vc pode tornar parcialmente acessível, usuarios que vc determianr podem acessar
-ou vc pode tornar totalmente publico exemplo um site.
-
-batch operation vc faz copia de arquivos para outro balde escolhendo quais vc quer ver, pois pode haver muitos arquivos para listar de uma unica vez
-
-
-03/04
-EC2
-ma nuvem vc tem multiplas maneira de ordar algo dentro dela, pode usar o ec2 para rodar uma maquina direta no hardware
-ELastic COmpute Cloud, é o segundo serviço da AWS, servidores para rodar na nuvem
-todo servidor fisico, mas o sistema não tem contado direto com o hardware, ele tem contado com o hypervisor, no caso um geremnciador vai admnistar o hardware CPU memoria etc, 
-atraves das placa de rede é acessado a internet outros servidores e serviços da AWS, no caso um s3 tb pode ser conecatado, e geralmente para guarda o servidor é usado o EBS ( Amazon elastic Block Store 
-armazenamento ephemewral é tipo um flash  armazenamento persistente é o que fica quando desliga maquina etc
-para criar um servidor aws tem um passo a passo, escolher a aamazon machine imagem que via ser usada no caso o sistema operaciona, seja linux wins ou mac, (AMI) 
-tornar o ambiente repetitivel, reutilizavel e recuperavel. 
-a imagem vive em uma região da aws, mas pode ser copiada caso não possua na sua regiao
-existe um conjunto de imagnes que a propria aws te dar caso não queira criar do zero
-e existe o AWS marketplace mas pode haver algum soft a mais embutido
-community AMIs use por sua conta e risco nada é testado pela aws é publico.
-faz o launche no caso cria a maquina estado de pendente depois estadao de running, pode rebootar a maquima, pode desligar a maquima, e pode terminar no caso apagar ela.
-e pode ser hibernada.
-vc precisa saber as familias na escolha da maquina ( 1 caracter familia, depois numero a geração, letreas complementarem ( gn graviton  ARM) tamanho da maquina.
-computer optimizer é feito para ver se a maquina esta sobrando ou faltando overprovisioned ou underrovivisioned
-EBS não é fileshare, 
-s3 não é sistema de arquivos
-File Share EFS ou FSX 
-EFS sistema de file share  LINUX. por causa do protocolo v4
-pago apenas pelo que se usa de armazenamento
-FSX pode ser usado com o wins por causa do protolo suportado dele.
-
-07/04
-EBS hd do servidor
-
-Regiões são compostas por Az ao menos 3, HPC seria uma solução aonde as maquinas ficam super juntas no caso um Cluster para processar coisas pesadas, se possivuel na mesma maquina
-ou no mesmo hack fisico a fim de reduzir a latencia, alta disponibilidade, 
-Spread é espalhando criando alta disponobilidade mas reduz latencia e velocidade
-partition - apacbe kafka , cassandra, spark, todas elas fazedm processamento de dados ou streamer, sharding os dados n ficam em um unico servidor, a ferrramenta espalha em varios
-servidores, mas que eles fiquem proximos, meio termo entre o cluster e o spread, usando um dos soft ja listado no exemplo.
-EC2
-
-on-demand paga por hora usada
-reserved insta eu digo o que vou usuar e uso só aquilo, uma forma de compromisso, exemplo servidor tal masquina tal sistema etc mas apenas isso por um tempo determinado.
-se pagar adiantado tem muito mais descontos
-Saving plans - 
-
-amazon ec2 Spot leilão de maquinas comprar partes ociosas de maquinas afin de procurar um desconto bem grande, mas pode acontecer a qualquer momento aws pode vir atras e mandar para de usar
-2 minutos geralmente.
-
-nAo se pode depender de invervenção manual para proteção das maquinas. ( segurança)
-
-10/04
-
-BANCO DE DADOS 
-escalabilidade de um banco sempre é um desafio
-quanto de espaço eu preciso
-modelo de dados que vai ser utilziado e latencia
-precisa que suporte qualquer modelo de dados, ja que o banco de dados relacional não tem total suporte 
-na aws tem um serviço chamado RDS feito para subir banco de dados na aws, inclusive pode subir uma maquina e vc mesmo instalar o banco ( serviço não gerenciado) 
-Mas pode ser feito gerenciados tb mundo relacional
-na parte não relacional DynamoDB aonde roda amazon.com
-amazon netpune blockchains são exenmplos disso
-amazon elastic cache copias do banco para resposta mais rapida
-escalabilidade vertical aumenta a maqyina poder
-vertical hozizontal copias do banco
-
-05-05
-
-Amazon VPC private virutal cloud, software definied network SDN, logicamente ela pode ter varias topologias
-primeiro nivel de isolamento da aws se chama conta, 
-segundo mivel vem com as vpcs
-só pode pertencer a uma unica região usuario define o que vai se comunicar e o tamanho da rede, CIDR block.
-CIDR ele gerencia IPs de redes
-subnet é um pedaço da vpc estando dentro da mesma rede.
-os nummeros de ip de subnet não podem bater com outras subnets que estiverem na mesma rede evitando colisão
-toda vpc tem uma tabela de rotas tendo apenas uma regraw que é fixa e não pode ser alterada  CIDS da vpc para local, qualquer coisa dentro da minha rede fala com quaqluer coisa dentro da
-minha rede, trafego local.
-dhcp protoclo de distribuiçaõ de redes mas no caso da aws ele n tem ips estaticos. são fixos
-existen 2 tipo de sub net publica e privada a public é onde os recursos dentro dela estão visiveis na internet publica tando dentro dela quando fora dela
-internet gateway tem que ser associada a VPC, precisa ter uma regraw de saida para internet.
-subnet privada, 
-
-
-
-2 bimestre
-
-Aula 05/05
-VPC
-CIDR
-
-26/05
-Segurança
-
-amazon cognito usado um sistema IAM groups para permissionamento de pessoas, associando as permissões que as pessoas precisam ter, erdando as permissões,
-jeito mais simples e seguro de gerencia.
-grupos n podem ter grupos dentro deles
-deve usar 
-ROLES
-ABAC
-
-
-
-29/05 
-User Pool cognito usa protocolos oauth ou openid, serve como autenticação para jogar na tela da AWS
-enviando um token para validar,  pode ate usar uma identidade federad
-para fazer interaçção entrra S3 e outros serviços amazon usam uma segunda pool. (identity pool)
-suporte token JWTs 
-suporte customização da tela de login
-
-AWs orgamization serviço que permite gerenciar multiplas contas usando hierarquia, dsentro de um lugar só, pricipal vantagen vc ve todas as contas e toda cobrança em um unico lugar
-acessa desconti por volume, quanto mais usa mas barato fica.
-SCP. services control policies politicas de governcia cdas conta da aws.
-quem da permissão apolice de grant ou de recurso
- aws control tower, serviço que cria contas para grandes empresas com todaos os recursos.
-proteçãp teorema cap confiabilidade  integridade disponibulidade nunca se ocnsegue ter os 3 juntos sempre tem que abrir mão de algum
-uma maneira dem elghgorar isso é usar criptografia, envelope de criptografia, 
-criptgrafia ssimetria a chave do envelope é a mesma para criptografiar e descriptografar faz os 2 trabalhos modelo mais simples
-assimetria usa 2 chaves, e sáo gerada por um metodo matematico
-
-
-CSE 
-SSE
-aws kms ferramente de criptografia padrão da aws cria chave simetrica ou assimetrica e ele mantem o ciclo de vida delas.
-HSM's criptgrafia via hardware ficando nujm servidor fisico para guardar chaves é carissimo
-WAF firewall dinamico ajudau a proteger aplicações expostas apra internet
-Shield  ferramenta de proteção contra ataque de negação DDOS attaccks, 
-MAcie ferramenta para varrer arquivos extruturados e semistriturados arquivos Json.
-Inspector ele varre as masquinas EC2 e container ECR procurando por vulnerabilidades. 
-Detetiva identificar comportamentos estranhos dentro da conta, focado em usuarios.
-Security hub painel para congtrolar todo sistem de segurança controla todos os demais aplicações mapa  geral deles é um gerenciador.
-Trusted advisor da recomendações de opmizaçoões por custos é pago.
-
-02/06
-monitoramento 
-para alcançar alta disponibilidade começar pelo monitoramento,  otimizar os recursos, se preocupar com o desempenho,
-segurança tb entra no monitoramento,  os 4 pilares
-Cloudwatch é a feramenta central para coletar armezenar e analisar metricas,  ( monitora log e metricas) 
-metricas são gratuitas logs não, pois o volume é muito grande.
-metricas customizadas tb são pagas,
-pode-se gerar grafico e gerar tb Alarmes
-alarmes são ferramen tas de automização de prevenção para avisar sobre uso ou desuso de recursos
-
-EventBridge barramento de eventos, monitorar aws em tempo real, 
-
-controlar custos aws cost exploder aws bagets, aws cost and usa report 
+Usuários / Grupos / Roles: Organização lógica para controle de acesso estruturado.
 
+Acesso Programático e Console: Via chaves de API ou login na AWS Console.
 
+Usuário Root: Deve ser usado apenas para configurações iniciais com MFA ativado.
 
+✅ Aula 17/03 - Políticas e Armazenamento
 
+Políticas de Identidade e Recurso: Controlam quem pode fazer o quê com cada serviço/recurso.
 
+ARN: Amazon Resource Name, identificador único dos recursos.
 
+Armazenamento AWS:
 
+EBS: Discos virtuais de blocos, ligados a instâncias EC2.
 
+EFS: Sistema de arquivos elástico e compartilhado entre múltiplas instâncias Linux.
 
+S3: Armazenamento de objetos com alta durabilidade e acessibilidade.
 
+✅ Aula 24/03 - S3 Avançado
+
+Gerenciamento de Ciclo de Vida: Automatiza movimentação de arquivos entre classes ou exclusão após validade.
+
+Versionamento: Guarda múltiplas versões do mesmo objeto, útil para recuperação de dados.
+
+CORS: Permite que domínios externos acessem arquivos do bucket com segurança.
+
+✅ Aula 27 e 31/03 - Códigos S3
+
+Políticas de Acesso: Configurações que definem quem pode acessar o quê dentro dos buckets.
+
+Criptografia SSE-S3: Criptografia gerenciada automaticamente pela AWS com chaves internas.
+
+Batch Operations: Execução de operações em massa como copiar, deletar ou atualizar objetos.
+
+✅ Aula 03/04 - EC2, EBS e AMI
+
+EC2: Serviço de computação elástica com controle total sobre instâncias.
+
+EBS: Armazenamento em bloco persistente para EC2.
+
+AMI: Imagem de máquina com sistema operacional e software pré-instalado reutilizável.
+
+Estados da Instância: Incluem pending, running, stopped, terminated e hibernated.
+
+✅ Aula 07/04 - Placement Groups e Modelos EC2
+
+Placement Groups:
+
+Cluster: Alta performance com baixa latência (mesmo rack).
+
+Spread: Alta disponibilidade (distribuição física).
+
+Partition: Separação lógica para big data e bancos escaláveis.
+
+Modelos de Compra EC2:
+
+On-Demand: Flexível, pagamento por hora/segundo.
+
+Reserved: Economia com uso previsível.
+
+Savings Plans: Desconto com compromisso de uso.
+
+Spot: Baixo custo com interrupções possíveis.
+
+✅ Aula 10/04 - Serviços de Banco de Dados
+
+RDS: Solução gerenciada para bancos relacionais com backups automáticos e failover.
+
+DynamoDB: Banco NoSQL de baixa latência e escalabilidade automática.
+
+ElasticCache: Armazenamento em cache para acesso mais rápido a dados.
+
+Escalabilidade:
+
+Vertical: Aumento da capacidade da máquina.
+
+Horizontal: Uso de réplicas e particionamento.
+
+✅ Aula 05/05 - VPC e Redes
+
+VPC: Criação de rede privada com controle total sobre sub-redes e roteamento.
+
+CIDR: Intervalo de endereços IP usado na rede.
+
+Subnet Pública: Sub-rede com acesso à internet via gateway.
+
+✅ Aula 12 e 15/05 - Laboratórios Canvas
+
+Guided Lab: Implementação de VPC manualmente com subnets e rotas.
+
+Challenge Lab: Criação de ambiente de rede isolado e funcional para simular rede de um café.
+
+✅ Aula 19/05 - Conectividade Avançada
+
+VPC Peering: Comunicação privada entre duas VPCs.
+
+VPN Site-to-Site: Conexão segura entre a AWS e um data center.
+
+AWS Direct Connect: Link dedicado com alta velocidade e menor latência.
+
+✅ Aula 26/05 - IAM Avançado e Cognito
+
+IAM Groups e Roles: Organização hierárquica e delegação de permissões.
+
+AWS STS: Emissão de credenciais temporárias para acesso seguro.
+
+Amazon Cognito: Autenticação federada (Google, Facebook, etc) e gerenciamento de usuários.
+
+✅ Aula 29/05 - Criptografia
+
+Criptografia Simétrica: Mesma chave para cifrar e decifrar (ex: AES).
+
+Criptografia Assimétrica: Chave pública e privada (ex: RSA).
+
+Ferramentas AWS:
+
+KMS: Gerenciamento central de chaves criptográficas.
+
+HSM: Hardware físico para proteger e gerar chaves.
+
+WAF / Shield / Macie / Inspector / Security Hub: Camadas adicionais de proteção contra ameaças.
+
+✅ Aula 09 e 12/06 - Ambientes Altamente Disponíveis
+
+Guided Lab: Construção de aplicação com alta disponibilidade.
+
+Challenge Lab: Simulação de ambiente escalável com balanceamento de carga, múltiplas AZs e failover automático.
+
+✅ Aula 16/06 - Load Balancer e DNS
+
+Load Balancer: Distribui tráfego automaticamente entre instâncias EC2 em várias zonas.
+
+DNS (Route 53): Serviço gerenciado de DNS com suporte a roteamento geográfico, failover e registros personalizados.
+
+✅ Aula 23/06 - Infraestrutura como Código
+
+IaC (Infrastructure as Code): Uso de código para definir, provisionar e manter infraestrutura. Exemplos: AWS CloudFormation, Terraform, CDK.
