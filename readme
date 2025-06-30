@@ -203,3 +203,21 @@ DNS (Route 53): Serviço gerenciado de DNS com suporte a roteamento geográfico,
 ✅ Aula 23/06 - Infraestrutura como Código
 
 IaC (Infrastructure as Code): Uso de código para definir, provisionar e manter infraestrutura. Exemplos: AWS CloudFormation, Terraform, CDK.
+
+✅ Aula 26/06 - Como Reduzir o Acoplamento das Aplicações
+
+    Baixo Acoplamento: O objetivo é fazer com que os componentes de uma aplicação dependam o mínimo possível uns dos outros, facilitando a manutenção, escalabilidade e resiliência.
+
+    Boas Práticas AWS para Reduzir Acoplamento:
+
+        Uso de Fila de Mensagens (SQS): Permite comunicação assíncrona entre serviços. Um serviço envia uma mensagem, o outro consome, mesmo que em tempos diferentes.
+
+        Uso de Eventos (SNS / EventBridge): Promove um modelo de publicação/assinatura, onde serviços podem reagir a eventos sem conhecer uns aos outros.
+
+        APIs bem definidas (API Gateway + Lambda): Cada serviço se comunica através de contratos claros (REST/HTTP ou GraphQL), desacoplando implementações internas.
+
+        Separação de Responsabilidades (Microserviços): Serviços pequenos e independentes, cada um responsável por uma função específica, com deploy e escalabilidade próprios.
+
+        Infraestrutura como Código (IaC): Facilita a padronização e replicação de ambientes, reduzindo dependências manuais entre componentes.
+
+        Design Orientado a Eventos: Reduz a dependência direta entre serviços, pois ações são acionadas por eventos que qualquer serviço pode escutar.
